@@ -12,7 +12,7 @@ export default function ProfileScreen({ navigation }) {
       <Text style={styles.info}>Member Since: 2025</Text>
 
       {/* Go back to home */}
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Home")}
       >
@@ -20,28 +20,32 @@ export default function ProfileScreen({ navigation }) {
       </TouchableOpacity>
 
       {/* Logout */}
-      <TouchableOpacity 
+      <TouchableOpacity
         style={[styles.button, { backgroundColor: "red", marginTop: 10 }]}
         onPress={() => navigation.navigate("Login")}
       >
         <Text style={styles.buttonText}>Logout</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#f8f9fa" },
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: "center",
+    backgroundColor: "#f8f9fa",
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
     color: "#2f5d62",
   },
-  info: { 
-    fontSize: 16, 
-    marginBottom: 10, 
+  info: {
+    fontSize: 16,
+    marginBottom: 10,
     color: "#333",
   },
   button: {
