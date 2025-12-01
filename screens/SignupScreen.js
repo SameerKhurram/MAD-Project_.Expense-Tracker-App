@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 export default function SignupScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -7,11 +13,15 @@ export default function SignupScreen({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleSignup = () => {
-    
+    if (!name || !email || !password) {
+      alert("Please fill all required details!");
+      return;
+    }
+
     console.log("Name:", name);
     console.log("Email:", email);
     console.log("Password:", password);
-    alert("Account Created (Demo)");
+    alert("Account Created");
   };
 
   return (
@@ -47,7 +57,8 @@ export default function SignupScreen({ navigation }) {
 
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Text style={styles.link}>
-          Already have an account? <Text style={styles.linkHighlight}>Log in</Text>
+          Already have an account?{" "}
+          <Text style={styles.linkHighlight}>Log in</Text>
         </Text>
       </TouchableOpacity>
     </View>
