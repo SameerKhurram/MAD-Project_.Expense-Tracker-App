@@ -1,45 +1,26 @@
 import React, { useState } from "react";
 import {
-View,
+  View,
   Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
   Alert,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function AddExpenseScreen({ navigation }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
 
-  const saveExpense = async () => {
+  const saveExpense = () => {
     if (!title || !amount || !category) {
       Alert.alert("Error", "Please fill all fields");
       return;
     }
 
-    const newExpense = {
-      id: Date.now(),
-      title,
-      amount: parseFloat(amount),
-      category,
-      date: new Date().toISOString(),
-    };
-
-    try {
-      const existing = await AsyncStorage.getItem("expenses");
-      const expenses = existing ? JSON.parse(existing) : [];
-
-      expenses.push(newExpense);
-      await AsyncStorage.setItem("expenses", JSON.stringify(expenses));
-
-      Alert.alert("Success", "Expense added!");
-      navigation.goBack(); 
-    } catch (error) {
-      Alert.alert("Error", "Could not save expense");
-    }
+    Alert.alert("Success", "Expense added");
+    navigation.goBack();
   };
 
   return (
@@ -55,7 +36,7 @@ export default function AddExpenseScreen({ navigation }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Amount"
+        placeholder="Amount (PKR)"
         keyboardType="numeric"
         value={amount}
         onChangeText={setAmount}
@@ -82,11 +63,11 @@ export default function AddExpenseScreen({ navigation }) {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    justifyContent: "center",
     backgroundColor: "#fff",
   },
 
