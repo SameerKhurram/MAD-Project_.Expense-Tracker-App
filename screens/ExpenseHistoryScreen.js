@@ -1,9 +1,13 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 export default function ExpenseHistoryScreen({ navigation }) {
-  
-  // STATIC DATA (fixed values)
   const expenses = [
     { id: "1", title: "Groceries", amount: 1200 },
     { id: "2", title: "Transport", amount: 350 },
@@ -26,13 +30,12 @@ export default function ExpenseHistoryScreen({ navigation }) {
         )}
       />
 
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Home")}
       >
         <Text style={styles.buttonText}>Back to Home</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
